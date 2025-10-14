@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,27 +8,32 @@ namespace lab1
 {
     internal class Methods
     {
-        public int sumLastNums(int x) /// 1
+        public int sumLastNums(int x) // 1
         {
             return (x % 10) + (x % 100 / 10);
         }
-        public bool isPositive(int x) /// 2
+
+        public bool isPositive(int x) // 2
         {
             return x >= 0;
         }
-        public bool isUpperCase(char x) /// 3
+
+        public bool isUpperCase(char x) // 3
         {
             return x >= 'A' && x <= 'Z';
         }
-        public bool isDivisor(int a, int b) /// 4
+
+        public bool isDivisor(int a, int b) // 4
         {
-            return  (a % b) == 0 || (b % a) == 0;
+            return (a % b) == 0 || (b % a) == 0;
         }
-        public int lastNumSum(int a, int b) /// 5
+
+        public int lastNumSum(int a, int b) // 5
         {
             return (a % 10) + (b % 10);
         }
-        public double safeDiv(int x, int y) /// 6
+
+        public double safeDiv(int x, int y) // 6
         {
             if (y == 0)
             {
@@ -39,47 +44,35 @@ namespace lab1
                 return x / y;
             }
         }
-        public String makeDecision(int x, int y) /// 7
-        {          
+
+        public String makeDecision(int x, int y) // 7
+        {
             if (x > y)
-            {              
+            {
                 return x + " > " + y;
             }
             else if (x < y)
-            {     
+            {
                 return x + " < " + y;
             }
             else
-            {              
+            {
                 return x + " == " + y;
             }
         }
-        public bool sum3(int x, int y, int z) /// 8
+
+        public bool sum3(int x, int y, int z) // 8
         {
-            if (x + y == z) 
-            {
-                return x + y == z;
-            }
-            else if (x + z == y)
-            {
-                return x + z == y;
-            }
-            else if (y + z == x)
-            {
-                return y + z == x;
-            }
-            else
-            {
-                return false;
-            }
+            return x + y == z || x + z == y || y + z == x;
         }
-        public String age(int x) /// 9
+
+        public String age(int x) // 9
         {
             if (x % 10 == 1 && x != 11)
             {
                 return "Вам " + x + " год";
             }
-            else if ((x % 10 >= 2 && x % 10 <= 4) && ! (x >= 12 && x <= 14))
+            else if ((x % 10 >= 2 && x % 10 <= 4) && !(x >= 12 && x <= 14))
             {
                 return "Вам " + x + " года";
             }
@@ -88,7 +81,8 @@ namespace lab1
                 return "Вам " + x + " лет";
             }
         }
-        public void printDays(string x) /// 10
+
+        public void printDays(string x) // 10
         {
             switch (x.ToLower())
             {
@@ -118,7 +112,8 @@ namespace lab1
                     break;
             }
         }
-        public String reverseListNums(int x) /// 11
+
+        public String reverseListNums(int x) // 11
         {
             string result = "";
 
@@ -130,23 +125,25 @@ namespace lab1
 
             return result;
         }
-        public int pow(int x, int y) /// 12
+
+        public int pow(int x, int y) // 12
         {
             int pow = 1;
 
             for (int i = 0; i < y; i++)
             {
-                pow *= x; 
+                pow *= x;
             }
 
             return pow;
         }
-        public bool equalNum(int x) /// 13
+
+        public bool equalNum(int x) // 13
         {
             if (x == 0)
             {
                 return true;
-            } 
+            }
 
             if (x < 0)
             {
@@ -157,33 +154,33 @@ namespace lab1
 
             while (x > 0)
             {
-                if (x % 10 != lastDigit) 
+                if (x % 10 != lastDigit)
                 {
                     return false;
-                }     
-                
+                }
+
                 x /= 10;
             }
 
             return true;
         }
-        public void leftTriangle(int x) /// 14
+
+        public void leftTriangle(int x) // 14
         {
             for (int i = 1; i <= x; i++)
             {
-
                 for (int j = 1; j <= i; j++)
                 {
                     Console.Write('*');
                 }
-
                 Console.WriteLine();
             }
         }
-        public void guessGame() /// 15
+
+        public void guessGame() // 15
         {
             Random random = new Random();
-            int secretNumber = random.Next(0, 10); // Генерируем число от 0 до 9
+            int secretNumber = random.Next(0, 10);
             int attempts = 0;
             int userGuess;
 
@@ -191,8 +188,7 @@ namespace lab1
 
             do
             {
-                Console.Write("Введите число от 0 до 9: ");
-                userGuess = Convert.ToInt32(Console.ReadLine());
+                userGuess = ReadIntInRange(0, 9, "Введите число от 0 до 9: ");
                 attempts++;
 
                 if (userGuess == secretNumber)
@@ -201,33 +197,29 @@ namespace lab1
                 }
                 else
                 {
-                    Console.WriteLine("Вы не угадали, введите число от 0 до 9:");
+                    Console.WriteLine("Вы не угадали, попробуйте снова.");
                 }
             }
             while (userGuess != secretNumber);
 
             Console.WriteLine($"Вы отгадали число за {attempts} попыт(ки/ок)");
         }
-        public int findLast(int[] arr, int x) /// 16
+
+        public int findLast(int[] arr, int x) // 16
         {
             for (int i = arr.Length - 1; i >= 0; i--)
             {
                 if (arr[i] == x)
                 {
-                    return i + 1;
-                }   
+                    return i;
+                }
             }
 
             return -1;
         }
-        public int[] add(int[] arr, int x, int pos) /// 17
+
+        public int[] add(int[] arr, int x, int pos) // 17
         {
-            
-            if (pos < 0 || pos > arr.Length)
-            {
-                Console.WriteLine($"Ошибка: позиция {pos} выходит за границы массива");
-                return arr;
-            }
 
             int[] newArr = new int[arr.Length + 1];
 
@@ -244,13 +236,14 @@ namespace lab1
             }
             return newArr;
         }
-        public void reverse(int[] arr) /// 18
+
+        public void reverse(int[] arr) // 18
         {
             int left = 0;
             int right = arr.Length - 1;
 
             while (left < right)
-            {               
+            {
                 int temp = arr[left];
                 arr[left] = arr[right];
                 arr[right] = temp;
@@ -258,23 +251,24 @@ namespace lab1
                 right--;
             }
         }
+
         public int[] concat(int[] arr1, int[] arr2) // 19
         {
-            int[] newArr = new int[arr1.Length + arr2.Length];           
+            int[] newArr = new int[arr1.Length + arr2.Length];
             for (int i = 0; i < arr1.Length; i++)
             {
-                newArr[i] = arr1[i];            
+                newArr[i] = arr1[i];
             }
 
             for (int i = 0; i < arr2.Length; i++)
             {
-                newArr[i+arr1.Length] = arr2[i];
+                newArr[i + arr1.Length] = arr2[i];
             }
             return newArr;
         }
+
         public int[] deleteNegative(int[] arr) // 20
         {
-            
             int count = 0;
             for (int i = 0; i < arr.Length; i++)
             {
@@ -295,6 +289,88 @@ namespace lab1
             }
 
             return result;
+        }
+
+        public int ReadInt(string prompt)
+        {
+            while (true)
+            {
+                try
+                {
+                    Console.Write(prompt);
+                    return Convert.ToInt32(Console.ReadLine());
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Ошибка: Введено не число. Попробуйте снова.");
+                }
+            }
+        }
+        public int ReadIntInRange(int min, int max, string prompt)
+        {
+            while (true)
+            {
+                try
+                {
+                    Console.Write(prompt);
+                    int number = Convert.ToInt32(Console.ReadLine());
+
+                    if (number >= min && number <= max)
+                    {
+                        return number;
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Ошибка: Число должно быть в диапазоне от {min} до {max}. Попробуйте снова.");
+                    }
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Ошибка: Введено не число. Попробуйте снова.");
+                }
+            }
+        }
+
+        public int ReadNonNegativeInt(string prompt)
+        {
+            while (true)
+            {
+                try
+                {
+                    Console.Write(prompt);
+                    int number = Convert.ToInt32(Console.ReadLine());
+
+                    if (number >= 0)
+                    {
+                        return number;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Ошибка: Число не может быть отрицательным. Попробуйте снова.");
+                    }
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Ошибка: Введено не число. Попробуйте снова.");
+                }
+            }
+        }
+        public int[] ReadIntArray(int size, string arrayName)
+        {
+            int[] array = new int[size];
+
+            for (int i = 0; i < size; i++)
+            {
+                array[i] = ReadInt($"Введите элемент {i + 1} для {arrayName}: ");
+            }
+
+            return array;
+        }
+
+
+        public int ReadArraySize(string prompt)
+        {
+            return ReadIntInRange(1, 25, prompt);
         }
     }
 }
