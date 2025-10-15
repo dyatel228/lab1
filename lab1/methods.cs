@@ -30,7 +30,21 @@ namespace lab1
 
         public int lastNumSum(int a, int b) // 5
         {
-            return (a % 10) + (b % 10);
+            int c = (a % 10) + (b % 10);
+            Console.WriteLine($"{a} + {b} это {c}");
+            Console.Write("Введите новое число для сложения с предыдущим: ");
+            a = Convert.ToInt32(Console.ReadLine());
+            b = (c % 10) + (a % 10);
+            Console.WriteLine($"{c} + {a} это {b}");
+            Console.Write("Введите новое число для сложения с предыдущим: ");
+            a = Convert.ToInt32(Console.ReadLine());
+            c = (b % 10) + (a % 10);
+            Console.WriteLine($"{b} + {a} это {c}");
+            Console.Write("Введите новое число для сложения с предыдущим: ");
+            a = Convert.ToInt32(Console.ReadLine());
+            b = (c % 10) + (a % 10);
+            Console.WriteLine($"{c} + {a} это {b}");
+            return b;
         }
 
         public double safeDiv(int x, int y) // 6
